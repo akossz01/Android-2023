@@ -12,7 +12,7 @@ A directory containing a starter Android project. You can use this project as a 
 ## Getting Started
 To begin using this template repository, follow these steps:
 
-1. Create your own repository based on this template and then clone your repo to your local machine.
+1. Create a repository based on this template and then clone your repo to your local machine.
 2. Navigate to the `kotlin-exercises` directory and complete the exercises by following the provided instructions.
 3. Go to the `android-project` directory and implement the core functionalities of the `Recipe-app`.
 4. Run the project to ensure that everything is functioning correctly.
