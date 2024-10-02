@@ -141,13 +141,9 @@ fun String.monogram(): String {
         .joinToString("")
 }
 
-fun List<String>.joinWithSeparator(separator: String): String {
-    return this.joinToString(separator)
-}
+fun List<String>.joinWithSeparator(separator: String) = joinToString(separator)
 
-fun List<String>.longestString(): String? {
-    return this.maxByOrNull { it.length }
-}
+fun List<String>.longestString() = this.maxByOrNull { it.length }
 
 // Problem 3
 data class Date(val year: Int, val month: Int, val day: Int): Comparable<Date> {
@@ -187,7 +183,3 @@ fun generateRandomDate(): Date {
     
     return Date(year, month, day)
 }
-
-
-
-
