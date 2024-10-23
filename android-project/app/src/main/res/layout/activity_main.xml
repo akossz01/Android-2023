@@ -25,7 +25,7 @@
             android:id="@+id/logoImage"
             android:layout_width="200dp"
             android:layout_height="100dp"
-            android:contentDescription="App Logo"
+            android:contentDescription="App Logo Main"
             android:src="@drawable/recipelogo"
             android:layout_gravity="center" />
 
