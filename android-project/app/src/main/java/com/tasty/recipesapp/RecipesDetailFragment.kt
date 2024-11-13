@@ -1,59 +1,49 @@
 package com.tasty.recipesapp
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.squareup.picasso.Picasso
+import com.tasty.recipesapp.viewmodel.RecipeListViewModel
+import com.tasty.recipesapp.repository.RecipeRepository
+import com.tasty.recipesapp.viewmodel.RecipeListViewModelFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [RecipesDetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class RecipesDetailFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var recipeViewModel: RecipeListViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recipes_detail, container, false)
-    }
+        val view = inflater.inflate(R.layout.fragment_recipes_detail, container, false)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RecipesDetailFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RecipesDetailFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        // Initialize ViewModel with the factory
+        val repository = RecipeRepository(requireContext())
+        val factory = RecipeListViewModelFactory(repository)
+        recipeViewModel = ViewModelProvider(requireActivity(), factory).get(RecipeListViewModel::class.java)
+
+        // Retrieve recipe ID from arguments
+        val recipeId = arguments?.getInt("recipeId")
+        val recipe = recipeViewModel.getRecipeById(recipeId)
+
+        // Initialize view elements
+        val recipeNameTextView = view.findViewById<TextView>(R.id.recipeName)
+        val recipeDescriptionTextView = view.findViewById<TextView>(R.id.recipeDescription)
+        val recipeImageView = view.findViewById<ImageView>(R.id.recipeImage)
+
+        // Display recipe details
+        recipe?.let {
+            recipeNameTextView.text = it.name
+            recipeDescriptionTextView.text = it.description
+            Picasso.get().load(it.thumbnailUrl).into(recipeImageView)
+        }
+
+        return view
     }
 }

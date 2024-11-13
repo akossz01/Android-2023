@@ -1,0 +1,395 @@
+[
+  {
+    "recipeID": 1,
+    "name": "One-Pot Lemon Garlic Shrimp Pasta",
+    "description": "This easy 30-minute pasta recipe transforms ingredients that you already have in your kitchen into a posh, seafood dish you’ll want to serve at your next dinner party. And since the whole dish is made in a single pot, clean-up is easy.",
+    "thumbnailUrl": "https://img.buzzfeed.com/video-api-prod/assets/9ee2dadcbfcb4095872e6cdbaa24ff14/Thumb_A_FB.jpg",
+    "keywords": ["pasta", "shrimp", "lemon", "garlic"],
+    "isPublic": false,
+    "userEmail": "someone@gmail.com",
+    "originalVideoUrl": "https://s3.amazonaws.com/video-api-prod/assets/3de913d586424e189521e13eeee0222d/BFV10181_One-Pot_Lemon_Garlic_Shrimp_Pasta_FB1080SQ.mp4",
+    "country": "US",
+    "numServings": 4,
+    "components": [
+      {
+        "rawText": "8 oz linguine",
+        "extraComment": "",
+        "ingredient": {
+          "name": "linguine"
+        },
+        "measurement": {
+          "quantity": "8",
+          "unit": {
+            "name": "ounce",
+            "displaySingular": "oz",
+            "displayPlural": "oz",
+            "abbreviation": "oz"
+          }
+        },
+        "position": 1
+      },
+      {
+        "rawText": "2 Tbsp. olive oil",
+        "extraComment": "",
+        "ingredient": {
+          "name": "olive oil"
+        },
+        "measurement": {
+          "quantity": "2",
+          "unit": {
+            "name": "tablespoon",
+            "displaySingular": "tbsp",
+            "displayPlural": "tbsp",
+            "abbreviation": "tbsp"
+          }
+        },
+        "position": 2
+      },
+      {
+        "rawText": "8 Tbsp. (1 stick) unsalted butter",
+        "extraComment": "1 stick",
+        "ingredient": {
+          "name": "unsalted butter"
+        },
+        "measurement": {
+          "quantity": "8",
+          "unit": {
+            "name": "tablespoon",
+            "displaySingular": "tbsp",
+            "displayPlural": "tbsp",
+            "abbreviation": "tbsp"
+          }
+        },
+        "position": 3
+      }
+    ],
+    "instructions": [
+      {
+        "instructionID": 1,
+        "displayText": "In a large pot, boil water and add pasta. Cook (stirring frequently) until al dente.",
+        "position": 1
+      },
+      {
+        "instructionID": 2,
+        "displayText": "Drain and set pasta aside.",
+        "position": 2
+      },
+      {
+        "instructionID": 3,
+        "displayText": "In the same pan, heat olive oil and 2 tablespoons of butter. Add garlic and cook until fragrant.",
+        "position": 3
+      },
+      {
+        "instructionID": 4,
+        "displayText": "Toss in shrimp, salt and pepper to taste, and stir until shrimp start to turn pink, but are not fully cooked.",
+        "position": 4
+      },
+      {
+        "instructionID": 5,
+        "displayText": "Add oregano and spinach, cook until wilted.",
+        "position": 5
+      },
+      {
+        "instructionID": 6,
+        "displayText": "Return cooked pasta to the pot, add remaining butter, parmesan, and parsley. Stir until well mixed and the butter is melted.",
+        "position": 6
+      },
+      {
+        "instructionID": 7,
+        "displayText": "When the shrimp are cooked, add lemon juice, mix once more, then serve while hot.",
+        "position": 7
+      },
+      {
+        "instructionID": 8,
+        "displayText": "Enjoy!",
+        "position": 8
+      }
+    ],
+    "nutrition": {
+      "calories": 567,
+      "protein": 31,
+      "fat": 28,
+      "carbohydrates": 44,
+      "sugar": 1,
+      "fiber": 2
+    }
+  },
+  {
+    "recipeID": 2,
+    "name": "Chicken Tikka Masala",
+    "description": "Chicken tikka masala is a popular Indian dish consisting of roasted marinated chicken chunks in a spiced curry sauce. It’s rich, creamy, and full of flavor.",
+      "thumbnailUrl": "https://www.seriouseats.com/thmb/DbQHUK2yNCALBnZE-H1M2AKLkok=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/chicken-tikka-masala-for-the-grill-recipe-hero-2_1-cb493f49e30140efbffec162d5f2d1d7.JPG",
+    "keywords": ["chicken", "Indian", "curry", "tikka"],
+    "isPublic": true,
+    "userEmail": "anotheruser@gmail.com",
+    "originalVideoUrl": "https://s3.amazonaws.com/video-api-prod/assets/samplevideo.mp4",
+    "country": "IN",
+    "numServings": 4,
+    "components": [
+      {
+        "rawText": "500g chicken breast, cubed",
+        "extraComment": "",
+        "ingredient": {
+          "name": "chicken breast"
+        },
+        "measurement": {
+          "quantity": "500",
+          "unit": {
+            "name": "grams",
+            "displaySingular": "g",
+            "displayPlural": "g",
+            "abbreviation": "g"
+          }
+        },
+        "position": 1
+      },
+      {
+        "rawText": "200g yogurt",
+        "extraComment": "",
+        "ingredient": {
+          "name": "plain yogurt"
+        },
+        "measurement": {
+          "quantity": "200",
+          "unit": {
+            "name": "grams",
+            "displaySingular": "g",
+            "displayPlural": "g",
+            "abbreviation": "g"
+          }
+        },
+        "position": 2
+      },
+      {
+        "rawText": "2 tbsp tikka masala paste",
+        "extraComment": "",
+        "ingredient": {
+          "name": "tikka masala paste"
+        },
+        "measurement": {
+          "quantity": "2",
+          "unit": {
+            "name": "tablespoon",
+            "displaySingular": "tablespoon",
+            "displayPlural": "tablespoons",
+            "abbreviation": "tbsp"
+          }
+        },
+        "position": 3
+      }
+    ],
+    "instructions": [
+      {
+        "instructionID": 1,
+        "displayText": "Mix yogurt and tikka masala paste. Marinate chicken for at least 30 minutes.",
+        "position": 1
+      },
+      {
+        "instructionID": 2,
+        "displayText": "Grill the marinated chicken until cooked through.",
+        "position": 2
+      },
+      {
+        "instructionID": 3,
+        "displayText": "In a pan, heat oil, and add onions until golden brown.",
+        "position": 3
+      },
+      {
+        "instructionID": 4,
+        "displayText": "Add garlic, ginger, and tomatoes, and cook for 10 minutes.",
+        "position": 4
+      },
+      {
+        "instructionID": 5,
+        "displayText": "Stir in cream and add the grilled chicken to the sauce.",
+        "position": 5
+      },
+      {
+        "instructionID": 6,
+        "displayText": "Serve hot with naan or rice.",
+        "position": 6
+      }
+    ],
+    "nutrition": {
+      "calories": 600,
+      "protein": 40,
+      "fat": 30,
+      "carbohydrates": 45,
+      "sugar": 5,
+      "fiber": 3
+    }
+  },
+  {
+    "recipeID": 3,
+    "name": "Vegetable Stir Fry",
+    "description": "A quick and easy vegetable stir fry using fresh veggies and a simple sauce. Perfect for a healthy dinner in under 20 minutes!",
+    "thumbnailUrl": "https://www.allrecipes.com/thmb/sJM3wA6mCvZ46ygU9zcIGTLSFOw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/222658-frozen-vegetable-stir-fry-2x1-1379-1fcd4cf97a5e467888fa2498e10c12e9.jpg",
+    "keywords": ["vegetarian", "stir fry", "quick", "healthy"],
+    "isPublic": true,
+    "userEmail": "veggie@gmail.com",
+    "originalVideoUrl": "https://s3.amazonaws.com/video-api-prod/assets/samplevideo2.mp4",
+    "country": "TH",
+    "numServings": 2,
+    "components": [
+      {
+        "rawText": "2 cups mixed vegetables (broccoli, bell peppers, carrots)",
+        "extraComment": "",
+        "ingredient": {
+          "name": "mixed vegetables"
+        },
+        "measurement": {
+          "quantity": "2",
+          "unit": {
+            "name": "cups",
+            "displaySingular": "cup",
+            "displayPlural": "cups",
+            "abbreviation": "cup"
+          }
+        },
+        "position": 1
+      },
+      {
+        "rawText": "3 tbsp soy sauce",
+        "extraComment": "",
+        "ingredient": {
+          "name": "soy sauce"
+        },
+        "measurement": {
+          "quantity": "3",
+          "unit": {
+            "name": "tablespoon",
+            "displaySingular": "tbsp",
+            "displayPlural": "tbsp",
+            "abbreviation": "tbsp"
+          }
+        },
+        "position": 2
+      }
+    ],
+    "instructions": [
+      {
+        "instructionID": 1,
+        "displayText": "Heat oil in a pan and add mixed vegetables.",
+        "position": 1
+      },
+      {
+        "instructionID": 2,
+        "displayText": "Stir fry for about 5 minutes until crisp-tender.",
+        "position": 2
+      },
+      {
+        "instructionID": 3,
+        "displayText": "Add soy sauce and stir to combine.",
+        "position": 3
+      },
+      {
+        "instructionID": 4,
+        "displayText": "Serve hot over rice or noodles.",
+        "position": 4
+      }
+    ],
+    "nutrition": {
+      "calories": 250,
+      "protein": 6,
+      "fat": 10,
+      "carbohydrates": 35,
+      "sugar": 5,
+      "fiber": 4
+    }
+  },
+  {
+    "recipeID": 4,
+    "name": "Classic Beef Tacos",
+    "description": "Authentic beef tacos with a seasoned meat filling, topped with fresh ingredients. Perfect for taco night!",
+    "thumbnailUrl": "https://cdn-prd.healthymealplans.com/recipe/020fb10f249eaf38bc99eaf8803e06bb-Classic-Beef-Tacos_16x9_Healthy-Meal-Plans.jpg",
+    "keywords": ["beef", "tacos", "Mexican", "easy"],
+    "isPublic": true,
+    "userEmail": "tacoLover@gmail.com",
+    "originalVideoUrl": "https://s3.amazonaws.com/video-api-prod/assets/samplevideo3.mp4",
+    "country": "MX",
+    "numServings": 6,
+    "components": [
+      {
+        "rawText": "1 lb ground beef",
+        "extraComment": "",
+        "ingredient": {
+          "name": "ground beef"
+        },
+        "measurement": {
+          "quantity": "1",
+          "unit": {
+            "name": "pound",
+            "displaySingular": "lb",
+            "displayPlural": "lbs",
+            "abbreviation": "lb"
+          }
+        },
+        "position": 1
+      },
+      {
+        "rawText": "1 packet taco seasoning",
+        "extraComment": "",
+        "ingredient": {
+          "name": "taco seasoning"
+        },
+        "measurement": {
+          "quantity": "1",
+          "unit": {
+            "name": "packet",
+            "displaySingular": "packet",
+            "displayPlural": "packets",
+            "abbreviation": "pack"
+          }
+        },
+        "position": 2
+      },
+      {
+        "rawText": "6 taco shells",
+        "extraComment": "",
+        "ingredient": {
+          "name": "taco shells"
+        },
+        "measurement": {
+          "quantity": "6",
+          "unit": {
+            "name": "shells",
+            "displaySingular": "shell",
+            "displayPlural": "shells",
+            "abbreviation": "shell"
+          }
+        },
+        "position": 3
+      }
+    ],
+    "instructions": [
+      {
+        "instructionID": 1,
+        "displayText": "In a skillet over medium heat, cook ground beef until browned.",
+        "position": 1
+      },
+      {
+        "instructionID": 2,
+        "displayText": "Add taco seasoning and water; stir to combine and simmer for 5 minutes.",
+        "position": 2
+      },
+      {
+        "instructionID": 3,
+        "displayText": "Fill taco shells with the beef mixture and toppings of your choice.",
+        "position": 3
+      },
+      {
+        "instructionID": 4,
+        "displayText": "Serve immediately with fresh salsa.",
+        "position": 4
+      }
+    ],
+    "nutrition": {
+      "calories": 400,
+      "protein": 25,
+      "fat": 20,
+      "carbohydrates": 30,
+      "sugar": 2,
+      "fiber": 3
+    }
+  }
+]
