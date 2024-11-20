@@ -1,59 +1,116 @@
 package com.tasty.recipesapp
 
+import RecipeAdapter
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.tasty.recipesapp.R
+import com.tasty.recipesapp.data.NutritionDTO
+import com.tasty.recipesapp.data.RecipeDTO
+import com.tasty.recipesapp.data.database.RecipeDatabase
+import com.tasty.recipesapp.data.entity.RecipeEntity
+import com.tasty.recipesapp.data.toRecipe
+import com.tasty.recipesapp.viewmodel.ProfileViewModel
+import com.tasty.recipesapp.model.Recipe
+import com.tasty.recipesapp.repository.RecipeRepository
+import com.tasty.recipesapp.viewmodel.ProfileViewModelFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProfileFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var profileViewModel: ProfileViewModel
+    private lateinit var recipesRecyclerView: RecyclerView
+    private lateinit var recipeAdapter: RecipeAdapter
+    private lateinit var recipeRepository: RecipeRepository
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProfileFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ProfileFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Initialize RecyclerView
+        recipesRecyclerView = view.findViewById(R.id.recipesRecyclerView)
+        recipesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        // Initialize the RecipeAdapter with an empty list
+        recipeAdapter = RecipeAdapter(listOf()) { recipe ->
+            // Handle item click, for example navigate to detail fragment
+            // navigateToRecipeDetail(recipe)
+        }
+        recipesRecyclerView.adapter = recipeAdapter
+
+        // Initialize ProfileViewModel
+        val context = requireContext()
+        val recipeDao = RecipeDatabase.getDatabase(context).recipeDao()
+
+        // Pass context and recipeDao to the RecipeRepository constructor
+        recipeRepository = RecipeRepository(context, recipeDao)
+        val factory = ProfileViewModelFactory(recipeRepository)
+        profileViewModel = ViewModelProvider(this, factory).get(ProfileViewModel::class.java)
+
+        // Observe recipes from ViewModel and update the RecyclerView
+        profileViewModel.getAllRecipes { recipeList ->
+            val recipeListMapped = recipeList.map { it.toRecipe() }  // Convert RecipeDTO to Recipe
+            recipeAdapter.updateData(recipeListMapped)  // Update the adapter with the list of recipes
+        }
+
+        val nutrition = NutritionDTO(
+            calories = 200,
+            protein = 10,
+            fat = 5,
+            carbohydrates = 20,
+            sugar = 10,
+            fiber = 5
+        )
+
+        // Handle adding a new recipe (for simplicity, use a button here)
+        view.findViewById<Button>(R.id.addRecipeButton).setOnClickListener {
+            val newRecipe = RecipeEntity(
+                name = "New Recipe",
+                description = "Recipe description",
+                thumbnailUrl = "http://example.com/thumbnail.jpg",
+                keywords = listOf("keyword1", "keyword2"),
+                isPublic = true,
+                userEmail = "user@example.com",
+                originalVideoUrl = "http://example.com/video.mp4",
+                country = "USA",
+                numServings = 4,
+                components = listOf(),
+                instructions = listOf(),
+                nutrition = nutrition
+            )
+
+            profileViewModel.insertRecipe(newRecipe)
+        }
+
+        // Handle deleting a recipe
+        view.findViewById<Button>(R.id.deleteRecipeButton).setOnClickListener {
+            val recipeToDelete = RecipeEntity(
+                name = "New Recipe",
+                description = "Recipe description",
+                thumbnailUrl = "http://example.com/thumbnail.jpg",
+                keywords = listOf("keyword1", "keyword2"),
+                isPublic = true,
+                userEmail = "user@example.com",
+                originalVideoUrl = "http://example.com/video.mp4",
+                country = "USA",
+                numServings = 4,
+                components = listOf(),
+                instructions = listOf(),
+                nutrition = nutrition
+            )
+            profileViewModel.deleteRecipe(recipeToDelete)
+        }
     }
 }

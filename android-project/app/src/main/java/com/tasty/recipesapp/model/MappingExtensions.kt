@@ -6,8 +6,6 @@ import com.tasty.recipesapp.data.NutritionDTO
 import com.tasty.recipesapp.data.RecipeDTO
 import com.tasty.recipesapp.data.MeasurementUnitDTO
 
-import kotlin.Unit
-
 // Extension function to map from RecipeDTO to Recipe model
 fun RecipeDTO.toModel(): Recipe {
     return Recipe(
@@ -22,6 +20,7 @@ fun RecipeDTO.toModel(): Recipe {
         country = this.country,
         numServings = this.numServings,
         components = this.components.map { it.toModel() },
+        instructions = this.instructions.map { it.toModel() },
         nutrition = this.nutrition.toModel()
     )
 }
@@ -40,7 +39,7 @@ fun ComponentDTO.toModel(): Component {
 // Mapping from InstructionDTO to Instruction model
 fun InstructionDTO.toModel(): Instruction {
     return Instruction(
-        id = this.instructionID,
+        id = this.id,
         displayText = this.displayText,
         position = this.position
     )

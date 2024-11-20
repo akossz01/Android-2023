@@ -12,16 +12,27 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_homeFragment_to_recipesFragment"
-            app:destination="@id/recipesFragment" />
+            app:destination="@id/recipesFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
+
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.tasty.recipesapp.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+    </fragment>
+
     <fragment
         android:id="@+id/recipesFragment"
         android:name="com.tasty.recipesapp.RecipesFragment"
@@ -29,8 +40,13 @@
         tools:layout="@layout/fragment_recipes" >
         <action
             android:id="@+id/action_recipesFragment_to_recipesDetailFragment"
-            app:destination="@id/recipesDetailFragment" />
+            app:destination="@id/recipesDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
+
     <fragment
         android:id="@+id/recipesDetailFragment"
         android:name="com.tasty.recipesapp.RecipesDetailFragment"

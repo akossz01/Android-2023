@@ -1,5 +1,6 @@
 package com.tasty.recipesapp
 
+import RecipeAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,9 +11,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.tasty.recipesapp.data.database.RecipeDatabase
 import com.tasty.recipesapp.model.Recipe
 import com.tasty.recipesapp.repository.RecipeRepository
-import com.tasty.recipesapp.ui.RecipeAdapter
 import com.tasty.recipesapp.viewmodel.RecipeListViewModel
 import com.tasty.recipesapp.viewmodel.RecipeListViewModelFactory
 
@@ -42,10 +43,12 @@ class RecipesFragment : Fragment() {
         }
         recipeRecyclerView.adapter = recipeAdapter
 
-        // Set up the ViewModel
-        val repository = RecipeRepository(requireContext())
+        // Set up the RecipeRepository with RecipeDao
+        val recipeDao = RecipeDatabase.getDatabase(requireContext()).recipeDao()
+        val repository = RecipeRepository(requireContext(), recipeDao)
         viewModel = ViewModelProvider(this, RecipeListViewModelFactory(repository)).get(
-            RecipeListViewModel::class.java)
+            RecipeListViewModel::class.java
+        )
 
         // Observe the recipes LiveData from the ViewModel and update the RecyclerView
         viewModel.recipes.observe(viewLifecycleOwner) { recipes ->
@@ -55,8 +58,9 @@ class RecipesFragment : Fragment() {
 
     // Function to navigate to the RecipeDetailFragment
     private fun navigateToRecipeDetail(recipe: Recipe) {
-        findNavController().navigate(R.id.action_recipesFragment_to_recipesDetailFragment,
-            bundleOf("recipeId" to recipe.id))
+        findNavController().navigate(
+            R.id.action_recipesFragment_to_recipesDetailFragment,
+            bundleOf("recipeId" to recipe.id)
+        )
     }
-
 }

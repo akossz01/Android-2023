@@ -1,7 +1,6 @@
 package com.tasty.recipesapp.data
 
 import com.tasty.recipesapp.model.Recipe
-import kotlin.Unit
 
 data class RecipeDTO(
     val id: Int,
@@ -32,7 +31,7 @@ fun RecipeDTO.toRecipe(): Recipe {
         country = this.country,
         numServings = this.numServings,
         components = this.components.map { it.toComponent() },
+        instructions = this.instructions.map { it.toInstruction() },
         nutrition = this.nutrition.toNutrition()
-
     )
 }
