@@ -12,13 +12,6 @@
         android:backgroundTint="#f15025"
         android:text="Add Recipe"/>
 
-    <Button
-        android:id="@+id/deleteRecipeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#70424242"
-        android:text="Delete Recipe"/>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recipesRecyclerView"
         android:layout_width="match_parent"

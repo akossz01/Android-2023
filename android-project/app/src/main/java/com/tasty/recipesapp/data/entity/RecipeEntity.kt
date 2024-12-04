@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 import com.tasty.recipesapp.data.ComponentDTO
 import com.tasty.recipesapp.data.InstructionDTO
 import com.tasty.recipesapp.data.NutritionDTO
+import com.tasty.recipesapp.data.RecipeDTO
 
 @Entity(tableName = "recipes")
 data class RecipeEntity(
@@ -23,3 +24,21 @@ data class RecipeEntity(
     @ColumnInfo(name = "instructions") val instructions: List<InstructionDTO>?,
     @ColumnInfo(name = "nutrition") val nutrition: NutritionDTO?
 )
+
+fun RecipeEntity.toRecipeDTO(): RecipeDTO {
+    return RecipeDTO(
+        id = this.internalId,
+        name = this.name ?: "",
+        description = this.description ?: "",
+        thumbnailUrl = this.thumbnailUrl ?: "",
+        keywords = this.keywords ?: listOf(),
+        isPublic = this.isPublic,
+        userEmail = this.userEmail ?: "",
+        originalVideoUrl = this.originalVideoUrl ?: "",
+        country = this.country ?: "",
+        numServings = this.numServings ?: 0,
+        components = this.components?.map { it } ?: listOf(),
+        instructions = this.instructions?.map { it } ?: listOf(),
+        nutrition = this.nutrition ?: NutritionDTO(0, 0, 0, 0, 0, 0)
+    )
+}

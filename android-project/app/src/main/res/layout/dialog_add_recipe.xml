@@ -1,0 +1,49 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/recipeTitleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Recipe Title" />
+
+        <EditText
+            android:id="@+id/recipeDescriptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Recipe Description" />
+
+        <ImageView
+            android:id="@+id/recipeImagePlaceholder"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/add_placeholder"
+            android:scaleType="center" />
+        <LinearLayout
+            android:id="@+id/instructionContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <Button
+            android:id="@+id/addInstructionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#f15025"
+            android:text="Add Instruction" />
+
+        <Button
+            android:id="@+id/submitRecipeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#f15025"
+            android:text="Submit" />
+    </LinearLayout>
+</ScrollView>

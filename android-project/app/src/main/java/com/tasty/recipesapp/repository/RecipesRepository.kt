@@ -11,6 +11,7 @@ import com.tasty.recipesapp.model.toModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
+import com.tasty.recipesapp.data.entity.toRecipeDTO
 
 class RecipeRepository(
     private val context: Context,
@@ -28,6 +29,10 @@ class RecipeRepository(
     // Insert a new recipe into the Room database
     suspend fun insertRecipe(recipe: RecipeEntity) {
         recipeDao.insertRecipe(recipe)
+    }
+
+    fun getRecipesByUserEmail(email: String): List<RecipeDTO> {
+        return recipeDao.getRecipesByUserEmail(email).map { it.toRecipeDTO() }
     }
 
     // Fetch all user-created recipes from Room

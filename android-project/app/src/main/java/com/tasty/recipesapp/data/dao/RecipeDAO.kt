@@ -14,6 +14,9 @@ interface RecipeDao {
     @Query("SELECT * FROM recipes")
     suspend fun getAllRecipes(): List<RecipeEntity>
 
+    @Query("SELECT * FROM recipes WHERE userEmail = :email")
+    fun getRecipesByUserEmail(email: String): List<RecipeEntity>
+
     @Delete
     suspend fun deleteRecipe(recipe: RecipeEntity)
 }

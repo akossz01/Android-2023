@@ -20,6 +20,12 @@ class ProfileViewModel(private val repository: RecipeRepository) : ViewModel() {
         }
     }
 
+    fun getRecipesByUserEmail(email: String, onResult: (List<RecipeDTO>) -> Unit) {
+        viewModelScope.launch {
+            onResult(repository.getRecipesByUserEmail(email))
+        }
+    }
+
     fun deleteRecipe(recipe: RecipeEntity) {
         viewModelScope.launch {
             repository.deleteRecipe(recipe)
