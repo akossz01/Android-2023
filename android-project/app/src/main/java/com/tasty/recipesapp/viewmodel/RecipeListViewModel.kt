@@ -1,5 +1,6 @@
 package com.tasty.recipesapp.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,6 +14,9 @@ import kotlinx.coroutines.launch
 class RecipeListViewModel(private val repository: RecipeRepository) : ViewModel() {
 
     private val _recipes = MutableLiveData<List<Recipe>>()
+
+    private val _selectedRecipe = MutableLiveData<Recipe?>()
+    val selectedRecipe: LiveData<Recipe?> get() = _selectedRecipe
     val recipes: LiveData<List<Recipe>>
         get() = _recipes
 
@@ -28,8 +32,19 @@ class RecipeListViewModel(private val repository: RecipeRepository) : ViewModel(
         }
     }
 
-    fun getRecipeById(id: Int?): Recipe? {
-        return recipes.value?.find { it.id == id }
+    fun getRecipeById(id: Int?) {
+        if (id == null) return
+
+        viewModelScope.launch {
+            try {
+                val recipeDTO = repository.getRecipeDetails(id.toString())
+                val recipe = recipeDTO.toRecipe()
+                _selectedRecipe.value = recipe
+            } catch (e: Exception) {
+                _selectedRecipe.value = null
+                Log.e("RecipeListViewModel", "Error fetching recipe by ID: ${e.message}", e)
+            }
+        }
     }
 }
 

@@ -32,7 +32,7 @@ class RecipesDetailFragment : Fragment() {
 
         // Retrieve recipe ID from arguments
         val recipeId = arguments?.getInt("recipeId")
-        val recipe = recipeViewModel.getRecipeById(recipeId)
+        recipeViewModel.getRecipeById(recipeId)
 
         // Initialize view elements
         val recipeNameTextView = view.findViewById<TextView>(R.id.recipeName)
@@ -40,16 +40,19 @@ class RecipesDetailFragment : Fragment() {
         val recipeImageView = view.findViewById<ImageView>(R.id.recipeImage)
         val recipeInstructionsTextView = view.findViewById<TextView>(R.id.recipeInstructions)
 
-        // Display recipe details
-        recipe?.let {
-            recipeNameTextView.text = it.name
-            recipeDescriptionTextView.text = it.description
-            Picasso.get().load(it.thumbnailUrl).into(recipeImageView)
+        // Observe the LiveData for recipe details
+        recipeViewModel.selectedRecipe.observe(viewLifecycleOwner) { recipe ->
+            recipe?.let {
+                recipeNameTextView.text = it.name
+                recipeDescriptionTextView.text = it.description
+                Picasso.get().load(it.thumbnailUrl).into(recipeImageView)
 
-            val instructionsText = it.instructions.joinToString(separator = "\n") { instruction ->
-                "${it.instructions.indexOf(instruction) + 1}. $instruction"
+                val instructionsText =
+                    it.instructions.joinToString(separator = "\n") { instruction ->
+                        "${it.instructions.indexOf(instruction) + 1}. $instruction"
+                    }
+                recipeInstructionsTextView.text = instructionsText
             }
-            recipeInstructionsTextView.text = instructionsText
         }
 
         return view

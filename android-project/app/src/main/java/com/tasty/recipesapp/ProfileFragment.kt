@@ -10,8 +10,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tasty.recipesapp.R
@@ -20,6 +22,8 @@ import com.tasty.recipesapp.data.NutritionDTO
 import com.tasty.recipesapp.data.entity.RecipeEntity
 import com.tasty.recipesapp.data.database.RecipeDatabase
 import com.tasty.recipesapp.data.toRecipe
+import com.tasty.recipesapp.model.Recipe
+import com.tasty.recipesapp.model.toRecipeEntity
 import com.tasty.recipesapp.repository.RecipeRepository
 import com.tasty.recipesapp.viewmodel.ProfileViewModel
 import com.tasty.recipesapp.viewmodel.ProfileViewModelFactory
@@ -57,12 +61,11 @@ class ProfileFragment : Fragment() {
         recipeAdapter = RecipeAdapter(
             recipes = listOf(), // Initially empty
             onItemClick = { recipe ->
-                // Handle item click; for example, navigate to a detail fragment
+                navigateToRecipeDetail(recipe)
             },
             onDeleteClick = { recipe ->
-                // Show delete confirmation dialog
-                // val recipeEntity = recipe.toRecipeEntity() // Convert Recipe to RecipeEntity
-                // showDeleteConfirmationDialog(recipeEntity)
+                val recipeEntity = recipe.toRecipeEntity()
+                showDeleteConfirmationDialog(recipeEntity)
             }
         )
         recipesRecyclerView.adapter = recipeAdapter
@@ -75,7 +78,7 @@ class ProfileFragment : Fragment() {
         profileViewModel = ViewModelProvider(this, factory).get(ProfileViewModel::class.java)
 
         // Observe recipes
-        profileViewModel.getAllRecipes { recipeList ->
+        profileViewModel.getUserRecipes { recipeList ->
             val recipeListMapped = recipeList.map { it.toRecipe() }
             recipeAdapter.updateData(recipeListMapped)
         }
@@ -141,7 +144,7 @@ class ProfileFragment : Fragment() {
                 name = title,
                 description = description,
                 thumbnailUrl = selectedImageUri?.toString() ?: "",
-                keywords = listOf(),
+                keywords = "",
                 isPublic = true,
                 userEmail = "akossz12@gmail.com",
                 originalVideoUrl = "",
@@ -181,5 +184,12 @@ class ProfileFragment : Fragment() {
             }
             .setNegativeButton("No", null)
             .show()
+    }
+
+    private fun navigateToRecipeDetail(recipe: Recipe) {
+        findNavController().navigate(
+            R.id.action_profileFragment_to_recipesDetailFragment,
+            bundleOf("recipeId" to recipe.id)
+        )
     }
 }

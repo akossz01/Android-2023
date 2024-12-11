@@ -14,6 +14,14 @@ class RecipeAdapter(
     private val onItemClick: (Recipe) -> Unit,
     private val onDeleteClick: (Recipe) -> Unit
 ) : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
+    companion object {
+        const val TYPE_REGULAR = 0
+        const val TYPE_PROFILE = 1
+    }
+
+//    override fun getItemViewType(position: Int): Int {
+//        return if (recipes[position].isProfile) TYPE_PROFILE else TYPE_REGULAR
+//    }
 
     class RecipeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val recipeName: TextView = itemView.findViewById(R.id.recipeName)
@@ -21,7 +29,7 @@ class RecipeAdapter(
         private val recipeDescription: TextView = itemView.findViewById(R.id.recipeDescription)
         private val viewRecipeButton: Button = itemView.findViewById(R.id.viewRecipeButton)
         private val addToWishlistButton: Button = itemView.findViewById(R.id.addToWishlistButton)
-        private val deleteRecipeButton: Button = itemView.findViewById(R.id.deleteRecipeButton)
+        // private val deleteRecipeButton: Button? = itemView.findViewById(R.id.deleteRecipeButton)
 
         fun bind(recipe: Recipe, onClick: (Recipe) -> Unit, onDelete: (Recipe) -> Unit) {
             recipeName.text = recipe.name
@@ -43,11 +51,6 @@ class RecipeAdapter(
                 onClick(recipe)
             }
 
-            // Set the click listener for the Delete Recipe button
-            deleteRecipeButton.setOnClickListener {
-                onDelete(recipe)
-            }
-
             addToWishlistButton.setOnClickListener {
                 // Toggle heart icon between filled and unfilled
                 val isFilled = addToWishlistButton.tag as? Boolean ?: false
@@ -59,12 +62,20 @@ class RecipeAdapter(
                 // Toggle the state
                 addToWishlistButton.tag = !isFilled
             }
+
+            itemView.setOnLongClickListener {
+                if (recipe.userEmail == "akossz12@gmail.com") {  // Assuming the user email is hardcoded for now
+                    onDelete(recipe)
+                }
+                true
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
-        // Inflate the item layout for each recipe
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_recipe, parent, false)
+        // val layout = if (viewType == TYPE_PROFILE) R.layout.item_recipe_profile else R.layout.item_recipe
+        val layout = R.layout.item_recipe
+        val view = LayoutInflater.from(parent.context).inflate(layout, parent, false)
         return RecipeViewHolder(view)
     }
 

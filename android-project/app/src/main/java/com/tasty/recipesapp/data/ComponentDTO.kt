@@ -14,8 +14,8 @@ fun ComponentDTO.toComponent(): Component {
     return Component(
         rawText = this.rawText,
         extraComment = this.extraComment,
-        ingredientName = this.ingredient.name,  // Assuming ingredient has a name property
-        measurement = this.measurement.quantity + " " + this.measurement.unit.displaySingular, // Adjust as needed
+        ingredient = this.ingredient,
+        measurement = this.measurement,
         position = this.position
     )
 }

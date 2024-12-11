@@ -14,7 +14,7 @@ data class RecipeEntity(
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "description") val description: String?,
     @ColumnInfo(name = "thumbnailUrl") val thumbnailUrl: String?,
-    @ColumnInfo(name = "keywords") val keywords: List<String>?,
+    @ColumnInfo(name = "keywords") val keywords: String?,
     @ColumnInfo(name = "isPublic") val isPublic: Boolean,
     @ColumnInfo(name = "userEmail") val userEmail: String?,
     @ColumnInfo(name = "originalVideoUrl") val originalVideoUrl: String?,
@@ -27,11 +27,11 @@ data class RecipeEntity(
 
 fun RecipeEntity.toRecipeDTO(): RecipeDTO {
     return RecipeDTO(
-        id = this.internalId,
+        recipeID = this.internalId,
         name = this.name ?: "",
         description = this.description ?: "",
         thumbnailUrl = this.thumbnailUrl ?: "",
-        keywords = this.keywords ?: listOf(),
+        keywords = this.keywords ?: "",
         isPublic = this.isPublic,
         userEmail = this.userEmail ?: "",
         originalVideoUrl = this.originalVideoUrl ?: "",
